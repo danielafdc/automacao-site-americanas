@@ -10,7 +10,7 @@ if @browser.eql?('headless')
 
     args = ['--no-default-browser.check']
     caps = Selenium::WebDriver::Remote::Capabilities.chrome(
-        'chromeOptions' => { 'args' => args}
+        'chromeOptions' => { 'args' => args }
     )
     Capybara.register_driver :selenium do |app|
         Capybara::Selenium::Driver.new(
@@ -23,6 +23,8 @@ if @browser.eql?('headless')
 end
 
 Capybara.configure do |config|
-    config.default_driver = :selenium
+    config.default_driver = :selenium_chrome
     config.app_host = 'https://www.americanas.com.br/'
 end
+
+Capybara.default_max_wait_time = 5
