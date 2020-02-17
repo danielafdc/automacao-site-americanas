@@ -23,6 +23,6 @@ if @browser.eql?('headless')
 end
 
 Capybara.configure do |config|
-    config.default_driver = :selenium_chrome
+    config.default_driver = :selenium
     config.app_host = 'https://www.americanas.com.br/'
 end

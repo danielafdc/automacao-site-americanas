@@ -16,7 +16,13 @@ pipeline {
         }
         stage('Run Features') {
             steps {
-                sh "bundle exec cucumber -p ci"
+                script {
+                    try {
+                        sh "bundle exec cucumber -p ci"
+                    } finally {
+                        cucumber fileIncludePattern: '**/*.json', jsonReportDirectory: 'log', sortingMethod: 'ALPHABETICAL'
+                    }
+                }
             }
         }
     }
